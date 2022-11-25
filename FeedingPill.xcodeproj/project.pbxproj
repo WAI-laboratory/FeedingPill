@@ -10,9 +10,24 @@
 		181344EB28FD0CAB001E3CBD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181344EA28FD0CAB001E3CBD /* AppDelegate.swift */; };
 		181344ED28FD0CAB001E3CBD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181344EC28FD0CAB001E3CBD /* SceneDelegate.swift */; };
 		181344EF28FD0CAB001E3CBD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181344EE28FD0CAB001E3CBD /* ViewController.swift */; };
-		181344F228FD0CAB001E3CBD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 181344F028FD0CAB001E3CBD /* Main.storyboard */; };
 		181344F428FD0CAC001E3CBD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 181344F328FD0CAC001E3CBD /* Assets.xcassets */; };
 		181344F728FD0CAC001E3CBD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 181344F528FD0CAC001E3CBD /* LaunchScreen.storyboard */; };
+		1813450128FD0CCF001E3CBD /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1813450028FD0CCF001E3CBD /* SnapKit */; };
+		1813450428FD0D15001E3CBD /* AddThen in Frameworks */ = {isa = PBXBuildFile; productRef = 1813450328FD0D15001E3CBD /* AddThen */; };
+		1813450628FD0D3C001E3CBD /* AlarmAddEditViewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1813450528FD0D3C001E3CBD /* AlarmAddEditViewcontroller.swift */; };
+		1813450828FD0D7B001E3CBD /* AlaramService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1813450728FD0D7B001E3CBD /* AlaramService.swift */; };
+		1813450B28FD1EF7001E3CBD /* PushNotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1813450A28FD1EF7001E3CBD /* PushNotificationService.swift */; };
+		1813450E28FD494F001E3CBD /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1813450D28FD494F001E3CBD /* Alarm.swift */; };
+		1813451128FD49CA001E3CBD /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 1813451028FD49CA001E3CBD /* Realm */; };
+		1813451328FD49CA001E3CBD /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1813451228FD49CA001E3CBD /* RealmSwift */; };
+		1813451528FD4FD5001E3CBD /* SoftDeletable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1813451428FD4FD5001E3CBD /* SoftDeletable.swift */; };
+		1813451728FD5644001E3CBD /* DBService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1813451628FD5644001E3CBD /* DBService.swift */; };
+		1813451928FD56E1001E3CBD /* OSLogService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1813451828FD56E1001E3CBD /* OSLogService.swift */; };
+		1813451C28FD5746001E3CBD /* ErrorHanlder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1813451B28FD5746001E3CBD /* ErrorHanlder.swift */; };
+		1813451F28FD5797001E3CBD /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1813451E28FD5797001E3CBD /* UserDefaults.swift */; };
+		1813452128FD5801001E3CBD /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1813452028FD5801001E3CBD /* Date+Ext.swift */; };
+		1813452328FD5889001E3CBD /* AlarmSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1813452228FD5889001E3CBD /* AlarmSettingViewController.swift */; };
+		1813452E28FEF18E001E3CBD /* WeekDaysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1813452D28FEF18E001E3CBD /* WeekDaysViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,10 +35,21 @@
 		181344EA28FD0CAB001E3CBD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		181344EC28FD0CAB001E3CBD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		181344EE28FD0CAB001E3CBD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		181344F128FD0CAB001E3CBD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		181344F328FD0CAC001E3CBD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		181344F628FD0CAC001E3CBD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		181344F828FD0CAC001E3CBD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1813450528FD0D3C001E3CBD /* AlarmAddEditViewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmAddEditViewcontroller.swift; sourceTree = "<group>"; };
+		1813450728FD0D7B001E3CBD /* AlaramService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlaramService.swift; sourceTree = "<group>"; };
+		1813450A28FD1EF7001E3CBD /* PushNotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationService.swift; sourceTree = "<group>"; };
+		1813450D28FD494F001E3CBD /* Alarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
+		1813451428FD4FD5001E3CBD /* SoftDeletable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoftDeletable.swift; sourceTree = "<group>"; };
+		1813451628FD5644001E3CBD /* DBService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBService.swift; sourceTree = "<group>"; };
+		1813451828FD56E1001E3CBD /* OSLogService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSLogService.swift; sourceTree = "<group>"; };
+		1813451B28FD5746001E3CBD /* ErrorHanlder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHanlder.swift; sourceTree = "<group>"; };
+		1813451E28FD5797001E3CBD /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
+		1813452028FD5801001E3CBD /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
+		1813452228FD5889001E3CBD /* AlarmSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSettingViewController.swift; sourceTree = "<group>"; };
+		1813452D28FEF18E001E3CBD /* WeekDaysViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekDaysViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +57,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1813451328FD49CA001E3CBD /* RealmSwift in Frameworks */,
+				1813451128FD49CA001E3CBD /* Realm in Frameworks */,
+				1813450128FD0CCF001E3CBD /* SnapKit in Frameworks */,
+				1813450428FD0D15001E3CBD /* AddThen in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +70,7 @@
 		181344DE28FD0CAB001E3CBD = {
 			isa = PBXGroup;
 			children = (
+				181344FE28FD0CB8001E3CBD /* New Group */,
 				181344E928FD0CAB001E3CBD /* FeedingPill */,
 				181344E828FD0CAB001E3CBD /* Products */,
 			);
@@ -56,15 +87,65 @@
 		181344E928FD0CAB001E3CBD /* FeedingPill */ = {
 			isa = PBXGroup;
 			children = (
+				1813451D28FD578F001E3CBD /* Util */,
+				1813451A28FD573E001E3CBD /* etc */,
+				1813450C28FD4947001E3CBD /* Model */,
+				1813450928FD1EE6001E3CBD /* Services */,
+				1813450528FD0D3C001E3CBD /* AlarmAddEditViewcontroller.swift */,
 				181344EA28FD0CAB001E3CBD /* AppDelegate.swift */,
 				181344EC28FD0CAB001E3CBD /* SceneDelegate.swift */,
 				181344EE28FD0CAB001E3CBD /* ViewController.swift */,
-				181344F028FD0CAB001E3CBD /* Main.storyboard */,
 				181344F328FD0CAC001E3CBD /* Assets.xcassets */,
 				181344F528FD0CAC001E3CBD /* LaunchScreen.storyboard */,
 				181344F828FD0CAC001E3CBD /* Info.plist */,
+				1813452228FD5889001E3CBD /* AlarmSettingViewController.swift */,
+				1813452D28FEF18E001E3CBD /* WeekDaysViewController.swift */,
 			);
 			path = FeedingPill;
+			sourceTree = "<group>";
+		};
+		181344FE28FD0CB8001E3CBD /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		1813450928FD1EE6001E3CBD /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				1813450728FD0D7B001E3CBD /* AlaramService.swift */,
+				1813450A28FD1EF7001E3CBD /* PushNotificationService.swift */,
+				1813451628FD5644001E3CBD /* DBService.swift */,
+				1813451828FD56E1001E3CBD /* OSLogService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		1813450C28FD4947001E3CBD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1813450D28FD494F001E3CBD /* Alarm.swift */,
+				1813451428FD4FD5001E3CBD /* SoftDeletable.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1813451A28FD573E001E3CBD /* etc */ = {
+			isa = PBXGroup;
+			children = (
+				1813451B28FD5746001E3CBD /* ErrorHanlder.swift */,
+				1813452028FD5801001E3CBD /* Date+Ext.swift */,
+			);
+			path = etc;
+			sourceTree = "<group>";
+		};
+		1813451D28FD578F001E3CBD /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				1813451E28FD5797001E3CBD /* UserDefaults.swift */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +164,12 @@
 			dependencies = (
 			);
 			name = FeedingPill;
+			packageProductDependencies = (
+				1813450028FD0CCF001E3CBD /* SnapKit */,
+				1813450328FD0D15001E3CBD /* AddThen */,
+				1813451028FD49CA001E3CBD /* Realm */,
+				1813451228FD49CA001E3CBD /* RealmSwift */,
+			);
 			productName = FeedingPill;
 			productReference = 181344E728FD0CAB001E3CBD /* FeedingPill.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +198,11 @@
 				Base,
 			);
 			mainGroup = 181344DE28FD0CAB001E3CBD;
+			packageReferences = (
+				181344FF28FD0CCF001E3CBD /* XCRemoteSwiftPackageReference "SnapKit" */,
+				1813450228FD0D15001E3CBD /* XCRemoteSwiftPackageReference "AddThen" */,
+				1813450F28FD49CA001E3CBD /* XCRemoteSwiftPackageReference "realm-swift" */,
+			);
 			productRefGroup = 181344E828FD0CAB001E3CBD /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -127,7 +219,6 @@
 			files = (
 				181344F728FD0CAC001E3CBD /* LaunchScreen.storyboard in Resources */,
 				181344F428FD0CAC001E3CBD /* Assets.xcassets in Resources */,
-				181344F228FD0CAB001E3CBD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,23 +229,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1813450B28FD1EF7001E3CBD /* PushNotificationService.swift in Sources */,
+				1813450628FD0D3C001E3CBD /* AlarmAddEditViewcontroller.swift in Sources */,
+				1813452128FD5801001E3CBD /* Date+Ext.swift in Sources */,
 				181344EF28FD0CAB001E3CBD /* ViewController.swift in Sources */,
 				181344EB28FD0CAB001E3CBD /* AppDelegate.swift in Sources */,
+				1813452E28FEF18E001E3CBD /* WeekDaysViewController.swift in Sources */,
+				1813451528FD4FD5001E3CBD /* SoftDeletable.swift in Sources */,
 				181344ED28FD0CAB001E3CBD /* SceneDelegate.swift in Sources */,
+				1813451C28FD5746001E3CBD /* ErrorHanlder.swift in Sources */,
+				1813452328FD5889001E3CBD /* AlarmSettingViewController.swift in Sources */,
+				1813451928FD56E1001E3CBD /* OSLogService.swift in Sources */,
+				1813451F28FD5797001E3CBD /* UserDefaults.swift in Sources */,
+				1813450E28FD494F001E3CBD /* Alarm.swift in Sources */,
+				1813450828FD0D7B001E3CBD /* AlaramService.swift in Sources */,
+				1813451728FD5644001E3CBD /* DBService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		181344F028FD0CAB001E3CBD /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				181344F128FD0CAB001E3CBD /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		181344F528FD0CAC001E3CBD /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -290,9 +385,9 @@
 				DEVELOPMENT_TEAM = VZTRDYYN8R;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FeedingPill/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UILaunchStoryboardName = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -318,9 +413,9 @@
 				DEVELOPMENT_TEAM = VZTRDYYN8R;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FeedingPill/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UILaunchStoryboardName = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -358,6 +453,56 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		181344FF28FD0CCF001E3CBD /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				branch = develop;
+				kind = branch;
+			};
+		};
+		1813450228FD0D15001E3CBD /* XCRemoteSwiftPackageReference "AddThen" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stareta1202/AddThen.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		1813450F28FD49CA001E3CBD /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1813450028FD0CCF001E3CBD /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 181344FF28FD0CCF001E3CBD /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		1813450328FD0D15001E3CBD /* AddThen */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1813450228FD0D15001E3CBD /* XCRemoteSwiftPackageReference "AddThen" */;
+			productName = AddThen;
+		};
+		1813451028FD49CA001E3CBD /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1813450F28FD49CA001E3CBD /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		1813451228FD49CA001E3CBD /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1813450F28FD49CA001E3CBD /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 181344DF28FD0CAB001E3CBD /* Project object */;
 }
