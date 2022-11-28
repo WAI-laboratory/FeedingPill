@@ -1,5 +1,6 @@
 import UIKit
 import Combine
+import AddThen
 
 class AlarmSettingViewController: UIViewController {
     typealias Core = AlarmSettingCore
@@ -28,6 +29,7 @@ class AlarmSettingViewController: UIViewController {
     
     private func initView() {
         tableView.backgroundColor = .systemGroupedBackground
+        tableView.rowHeight = UITableView.automaticDimension
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .automatic
         saveBarButton = UIBarButtonItem(systemItem: .add, primaryAction: saveAction)
@@ -53,8 +55,9 @@ class AlarmSettingViewController: UIViewController {
     
     private func bind(core: Core) {
         core.$alarms
+            .assertNoFailure()
+            .delay(for: 0.5, scheduler: DispatchQueue.main)
             .sink { [weak self] alarms in
-                print("🥶 bindbind \(alarms.count)")
                 self?.tableView.reloadData()
             }
             .store(in: &subscription)
@@ -63,7 +66,6 @@ class AlarmSettingViewController: UIViewController {
 
 extension AlarmSettingViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("🥶 core.alarms.count\(core.alarms.count)")
         return core.alarms.count
     }
     
@@ -73,13 +75,7 @@ extension AlarmSettingViewController: UITableViewDataSource, UITableViewDelegate
         cell.selectionStyle = .none
         cell.tag = indexPath.row
         let alarm = core.alarms[indexPath.row]
-        let amAttr: [NSAttributedString.Key : Any] = [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 20.0)]
-//        let str = NSMutableAttributedString(string: alarm.formattedTime, attributes: amAttr)
-        let str = NSMutableAttributedString(string: alarm.title, attributes: amAttr)
-        let timeAttr: [NSAttributedString.Key : Any] = [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 45.0)]
-        str.addAttributes(timeAttr, range: NSMakeRange(0, str.length-2))
-        cell.textLabel?.attributedText = str
-        cell.detailTextLabel?.text = alarm.title
+
         //append switch button
         let sw = cell.switch
         
@@ -97,12 +93,18 @@ extension AlarmSettingViewController: UITableViewDataSource, UITableViewDelegate
             cell.detailTextLabel?.alpha = 0.5
         }
         
+        cell.configure(repeatableAlarm: alarm)
+        
         //delete empty seperator line
         tableView.tableFooterView = UIView(frame: CGRect.zero)
         cell.backgroundColor = .red
         
         return cell
     }
+    
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        <#code#>
+//    }
     
     @objc
     private func switchTapped(_ sender: UISwitch) {
@@ -142,28 +144,90 @@ class AlarmSettingCore: ObservableObject {
             .assertNoFailure()
             .print("🥶👀22")
             .assign(to: &self.$alarms)
-//            .assign(to: \.alarms, on: self)
-//            .sink { error in
-//                print("assa\(error)")
-//            } receiveValue: { [weak self] alarsm in
-//                self?.alarms = alarsm
-//            }
-//            .store(in: &subscription)
     }
 
 }
 
 class AlarmSettingTableViewCell: UITableViewCell {
     static let identifier = "AlarmSettingTableViewCell"
+    private let titleLabel = UILabel()
+    private let subTitleLabel = UILabel()
+    private let iconImageView = UIImageView()
+    private let timeLabel = UILabel()
+    private let dateLabel = UILabel()
+
     var `switch` = UISwitch()
     
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        self.accessoryView = self.switch
+//        self.accessoryView = self.switch
+        
+        
+        contentView.add(iconImageView) {
+            $0.snp.makeConstraints { make in
+                make.height.width.equalTo(48)
+                make.top.equalToSuperview().inset(16)
+                make.leading.equalToSuperview().inset(16)
+            }
+        }
+        contentView.add(titleLabel) {
+            $0.font = .preferredFont(forTextStyle: .title1)
+            $0.snp.makeConstraints { make in
+                make.top.equalTo(self.iconImageView)
+                make.leading.equalTo(self.iconImageView.snp.trailing).offset(8)
+            }
+        }
+        
+        contentView.add(subTitleLabel) {
+            $0.font = .preferredFont(forTextStyle: .subheadline)
+            $0.snp.makeConstraints { make in
+                make.bottom.equalTo(self.iconImageView)
+                make.leading.equalTo(self.iconImageView.snp.trailing).offset(8)
+            }
+        }
+        
+        contentView.add(dateLabel) {
+            $0.font = .preferredFont(forTextStyle: .caption1)
+            $0.snp.makeConstraints { make in
+                make.top.equalTo(self.subTitleLabel.snp.bottom).offset(12)
+                make.leading.equalTo(self.iconImageView.snp.trailing).offset(8)
+            }
+        }
+        
+        contentView.add(timeLabel) {
+            $0.font = .preferredFont(forTextStyle: .caption1)
+            $0.snp.makeConstraints { make in
+                make.top.equalTo(self.dateLabel.snp.bottom).offset(4)
+                make.leading.equalTo(self.iconImageView.snp.trailing).offset(8)
+                make.bottom.equalToSuperview().inset(16)
+            }
+        }
+        
     }
             
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func configure(repeatableAlarm: RepeatableAlarm) {
+        self.titleLabel.text = repeatableAlarm.title
+        self.subTitleLabel.text = repeatableAlarm.content
+        self.dateLabel.text = nil
+        var dateText = ""
+        for date in repeatableAlarm.dates {
+            dateText += date.formattedTime + ", "
+        }
+        self.dateLabel.text = dateText
+        self.timeLabel.text = AlarmAddEditViewController.repeatText(weekdays: Array(repeatableAlarm.repeatDays))
+        
+        if let pillType = PillType(rawValue: repeatableAlarm.pillType) {
+            switch pillType {
+            case .medicine:
+                self.iconImageView.image = UIImage(named: "pill")
+            case .nutrients:
+                self.iconImageView.image = UIImage(named: "pillRound")
+            }
+        }
     }
 }
