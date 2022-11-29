@@ -7,7 +7,7 @@ import Combine
 import RealmSwift
 
 class AlarmAddEditViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+    private var subscription = Set<AnyCancellable>()
 
     let dateFormatter: DateFormatter = {
         let _dateFormatter = DateFormatter()
@@ -41,7 +41,7 @@ class AlarmAddEditViewController: UIViewController, UITableViewDelegate, UITable
     var selectedWeekDaysObserver: AnyCancellable? = nil
     
     var saveButton: UIBarButtonItem!
-    var dates: [Date] = []
+    @Published var dates: [Date] = []
     var datesDidchanged: () = Void() {
         didSet {
             self.tableView.reloadData()
@@ -70,6 +70,7 @@ class AlarmAddEditViewController: UIViewController, UITableViewDelegate, UITable
     private func initView() {
         view.backgroundColor = .systemBackground
         self.saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(self.save))
+        self.saveButton.isEnabled = false
         navigationItem.rightBarButtonItems = [saveButton]
         
         imagePicker.sourceType = .photoLibrary
@@ -134,6 +135,20 @@ class AlarmAddEditViewController: UIViewController, UITableViewDelegate, UITable
                 make.top.equalTo(self.imageViewWrapperView.snp.bottom)
             }
         }
+//
+//        dates.publisher
+//            .sink { dates in
+//                <#code#>
+//            }
+//            .store(in: &subscription)
+        $dates.sink { [weak self] dates in
+            if dates.count > 0 {
+                self?.saveButton.isEnabled = true
+            } else {
+                self?.saveButton.isEnabled = false
+            }
+        }
+        .store(in: &subscription)
         
     }
     
