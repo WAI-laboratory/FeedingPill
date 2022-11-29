@@ -53,10 +53,7 @@ class PushNotificationManager: NSObject {
         let content = UNMutableNotificationContent()
         content.title = "Weekly Staff Meeting"
         content.body = "Every Tuesday at 2pm"
-//        content.sound = .defaultRingtone
-//        content.sound = .defaultCritical
         content.sound = .default
-        content.badge = 3
         // Configure the recurring date.
         var dateComponents = DateComponents()
         dateComponents.calendar = Calendar.current

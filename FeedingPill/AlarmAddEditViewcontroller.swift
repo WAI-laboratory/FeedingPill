@@ -15,9 +15,11 @@ class AlarmAddEditViewController: UIViewController, UITableViewDelegate, UITable
         return _dateFormatter
     }()
     
+    private var imagePicker: UIImagePickerController = .init()
     var imageViewWrapperView = UIView()
     var imageView = UIImageView()
     var plusImageView = UIImageView()
+    var selectedImage: UIImage? = nil
     var tableView: UITableView = .init()
     var selectedWeekDays = WeekDaysManager()
     
@@ -70,7 +72,14 @@ class AlarmAddEditViewController: UIViewController, UITableViewDelegate, UITable
         self.saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(self.save))
         navigationItem.rightBarButtonItems = [saveButton]
         
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.delegate = self
         view.add(imageViewWrapperView) {
+            let interaction = UIContextMenuInteraction(delegate: self)
+            $0.addInteraction(interaction)
+            
+            let tapAction = UITapGestureRecognizer(target: self, action: #selector(self.tapImageView))
+            $0.addGestureRecognizer(tapAction)
             $0.add(self.imageView) {
                 $0.image = UIImage(named: "pillCombined")
                 $0.backgroundColor = .systemGray2
@@ -80,14 +89,18 @@ class AlarmAddEditViewController: UIViewController, UITableViewDelegate, UITable
                     make.height.width.equalTo(80)
                     make.center.equalToSuperview()
                 }
+
             }
             $0.snp.makeConstraints { make in
                 make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
                 make.trailing.leading.equalToSuperview()
                 make.height.equalTo(120)
             }
+
+
         }
         self.imageViewWrapperView.add(UIView()) {
+
             $0.backgroundColor = .systemGray4
             $0.layer.cornerRadius = 16
             $0.layer.masksToBounds = true
@@ -122,6 +135,50 @@ class AlarmAddEditViewController: UIViewController, UITableViewDelegate, UITable
             }
         }
         
+    }
+    
+    @objc
+    func tapImageView() {
+        let menu = UIMenu(children: [
+            photoLibraryAction,
+            cameraAction,
+        ])
+        
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let photoAlert = UIAlertAction(title: "Photo Album", style: .default) { [weak self] _ in
+            self?.presentImagePicker()
+        }
+        
+        let cameraAlert = UIAlertAction(title: "Camera", style: .default) { [weak self] _ in
+            self?.presentCamera()
+        }
+        
+        alertController.addAction(photoAlert)
+        alertController.addAction(cameraAlert)
+        self.present(alertController, animated: true)
+        
+    }
+    
+    private lazy var photoLibraryAction = UIAction(title: "Photo Album", state: .off) { [weak self] _ in
+        self?.presentImagePicker()
+    }
+    private lazy var cameraAction = UIAction(title: "Camera", state: .off) { [weak self] _ in
+        self?.presentCamera()
+    }
+    
+    private func presentImagePicker() {
+        present(imagePicker, animated: true)
+    }
+    
+    private func presentCamera() {
+        if (UIImagePickerController.isSourceTypeAvailable(.camera)) {
+            let picker = UIImagePickerController()
+            picker.sourceType = .camera
+            picker.delegate = self
+            present(picker, animated: true, completion: nil)
+        } else {
+            
+        }
     }
  
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -298,12 +355,18 @@ class AlarmAddEditViewController: UIViewController, UITableViewDelegate, UITable
         for date in dates {
             repeatableAlarm.dates.append(date)
         }
-        
         repeatableAlarm.title = self.pillName ?? "Take a pill!"
         repeatableAlarm.suggestedUse = self.suggestedUse ?? ""
         for weekday in self.selectedWeekDays.weekdays {
             repeatableAlarm.repeatDays.append(weekday)
         }
+        
+        if let selectedImage {
+            let imageId = UUID().uuidString
+            repeatableAlarm.imageId = imageId
+            ImageDataController.shared.save(alarm: repeatableAlarm, image: selectedImage, for: imageId)
+        }
+
         DBService.shared.update(repeatableAlarm)
         PushNotificationManager.shared.scheduleNotification(reminder: repeatableAlarm)
         self.dismiss(animated: true)
@@ -369,6 +432,57 @@ class AlarmAddEditViewController: UIViewController, UITableViewDelegate, UITable
             }
         }
         return ret
+    }
+}
+
+extension AlarmAddEditViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        var pickedImage: UIImage?
+        if let image = info[.editedImage] as? UIImage {
+            self.selectedImage = image
+            pickedImage = self.selectedImage
+        } else if let image = info[.originalImage] as? UIImage {
+            self.selectedImage = image
+            pickedImage = self.selectedImage
+        }
+        
+        guard let image = pickedImage else {
+            if picker == imagePicker {
+                imagePicker.dismiss(animated: true)
+            } else {
+                picker.dismiss(animated: true)
+            }
+            return
+        }
+        
+        self.imageView.image = image
+
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        if picker == imagePicker {
+            imagePicker.dismiss(animated: true)
+        } else {
+            picker.dismiss(animated: true)
+        }
+    }
+}
+
+extension AlarmAddEditViewController: UIContextMenuInteractionDelegate {
+    func contextMenuInteraction(_ interaction: UIContextMenuInteraction, configurationForMenuAtLocation location: CGPoint) -> UIContextMenuConfiguration? {
+        
+        return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { suggestedActions in
+            var photoLibraryAction = UIAction(title: "", state: .off) { [weak self] _ in
+                self?.presentImagePicker()
+            }
+            var cameraAction = UIAction(title: "", state: .off) { [weak self] _ in
+                self?.presentCamera()
+            }
+            return UIMenu(title: "", children: [
+                photoLibraryAction,
+                cameraAction
+            ])
+        }
     }
 }
 

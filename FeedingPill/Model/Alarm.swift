@@ -36,11 +36,11 @@ class RepeatableAlarm: SoftDeletableObject, AlarmProtocol {
     @Persisted var createdAt = Date()
     @Persisted var modifiedAt = Date()
     @Persisted var onSnooze: Bool = false
-    @Persisted var imageUrl: String? = nil
+    @Persisted var imageId: String? = nil
     
-    var thumbnailImageUrl: String? {
-        guard let imageUrl else { return nil }
-        return imageUrl + "_thumbnail"
+    var thumbnailImageId: String? {
+        guard let imageId else { return nil }
+        return imageId + "_thumbnail"
     }
 }
 

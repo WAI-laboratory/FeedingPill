@@ -28,6 +28,8 @@
 		1813452128FD5801001E3CBD /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1813452028FD5801001E3CBD /* Date+Ext.swift */; };
 		1813452328FD5889001E3CBD /* AlarmSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1813452228FD5889001E3CBD /* AlarmSettingViewController.swift */; };
 		1813452E28FEF18E001E3CBD /* WeekDaysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1813452D28FEF18E001E3CBD /* WeekDaysViewController.swift */; };
+		183485F4293653B600D59DC9 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 183485F3293653B600D59DC9 /* Kingfisher */; };
+		183485F6293653E400D59DC9 /* ImageDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183485F5293653E400D59DC9 /* ImageDataController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +52,7 @@
 		1813452028FD5801001E3CBD /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 		1813452228FD5889001E3CBD /* AlarmSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSettingViewController.swift; sourceTree = "<group>"; };
 		1813452D28FEF18E001E3CBD /* WeekDaysViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekDaysViewController.swift; sourceTree = "<group>"; };
+		183485F5293653E400D59DC9 /* ImageDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +64,7 @@
 				1813451128FD49CA001E3CBD /* Realm in Frameworks */,
 				1813450128FD0CCF001E3CBD /* SnapKit in Frameworks */,
 				1813450428FD0D15001E3CBD /* AddThen in Frameworks */,
+				183485F4293653B600D59DC9 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,6 +103,7 @@
 				181344F528FD0CAC001E3CBD /* LaunchScreen.storyboard */,
 				181344F828FD0CAC001E3CBD /* Info.plist */,
 				1813452228FD5889001E3CBD /* AlarmSettingViewController.swift */,
+				183485F5293653E400D59DC9 /* ImageDataController.swift */,
 				1813452D28FEF18E001E3CBD /* WeekDaysViewController.swift */,
 			);
 			path = FeedingPill;
@@ -169,6 +174,7 @@
 				1813450328FD0D15001E3CBD /* AddThen */,
 				1813451028FD49CA001E3CBD /* Realm */,
 				1813451228FD49CA001E3CBD /* RealmSwift */,
+				183485F3293653B600D59DC9 /* Kingfisher */,
 			);
 			productName = FeedingPill;
 			productReference = 181344E728FD0CAB001E3CBD /* FeedingPill.app */;
@@ -202,6 +208,7 @@
 				181344FF28FD0CCF001E3CBD /* XCRemoteSwiftPackageReference "SnapKit" */,
 				1813450228FD0D15001E3CBD /* XCRemoteSwiftPackageReference "AddThen" */,
 				1813450F28FD49CA001E3CBD /* XCRemoteSwiftPackageReference "realm-swift" */,
+				183485F2293653B500D59DC9 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 181344E828FD0CAB001E3CBD /* Products */;
 			projectDirPath = "";
@@ -234,6 +241,7 @@
 				1813452128FD5801001E3CBD /* Date+Ext.swift in Sources */,
 				181344EF28FD0CAB001E3CBD /* ViewController.swift in Sources */,
 				181344EB28FD0CAB001E3CBD /* AppDelegate.swift in Sources */,
+				183485F6293653E400D59DC9 /* ImageDataController.swift in Sources */,
 				1813452E28FEF18E001E3CBD /* WeekDaysViewController.swift in Sources */,
 				1813451528FD4FD5001E3CBD /* SoftDeletable.swift in Sources */,
 				181344ED28FD0CAB001E3CBD /* SceneDelegate.swift in Sources */,
@@ -479,6 +487,14 @@
 				kind = branch;
 			};
 		};
+		183485F2293653B500D59DC9 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -501,6 +517,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1813450F28FD49CA001E3CBD /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
+		};
+		183485F3293653B600D59DC9 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 183485F2293653B500D59DC9 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
