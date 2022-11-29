@@ -5,7 +5,7 @@ protocol AlarmProtocol {
     var id: String { get set }
     var type: String { get set }
     var title: String { get set }
-    var content: String { get set }
+    var suggestedUse: String { get set }
     var createdAt: Date { get set }
     var modifiedAt: Date { get set }
 }
@@ -16,7 +16,7 @@ class SingleAlarm: SoftDeletableObject, AlarmProtocol {
     @Persisted var targetDate = Date()
     @Persisted var type: String = ""
     @Persisted var title = ""
-    @Persisted var content = ""
+    @Persisted var suggestedUse = ""
     @Persisted var isActive: Bool = true
     @Persisted var isEnable: Bool = true
     @Persisted var createdAt = Date()
@@ -29,7 +29,7 @@ class RepeatableAlarm: SoftDeletableObject, AlarmProtocol {
     @Persisted var repeatDays = List<Int>()
     @Persisted var type: String = ""
     @Persisted var title = ""
-    @Persisted var content = ""
+    @Persisted var suggestedUse = ""
     @Persisted var pillType = PillType.nutrients.rawValue
     @Persisted var isActive: Bool = true
     @Persisted var isEnable: Bool = true

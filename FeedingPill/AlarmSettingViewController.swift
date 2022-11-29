@@ -97,14 +97,9 @@ extension AlarmSettingViewController: UITableViewDataSource, UITableViewDelegate
         
         //delete empty seperator line
         tableView.tableFooterView = UIView(frame: CGRect.zero)
-        cell.backgroundColor = .red
         
         return cell
     }
-    
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        <#code#>
-//    }
     
     @objc
     private func switchTapped(_ sender: UISwitch) {
@@ -132,7 +127,6 @@ class AlarmSettingCore: ObservableObject {
     @Published var alarms: [RepeatableAlarm] = []
     
     init () {
-//        let a =
         dbService.realm.objects(RepeatableAlarm.self)
             .collectionPublisher
             .map { results -> [RepeatableAlarm] in
@@ -140,9 +134,7 @@ class AlarmSettingCore: ObservableObject {
                 let _results = results.filter(predicate)
                 return Array(_results)
             }
-            .print("🥶👀11")
             .assertNoFailure()
-            .print("🥶👀22")
             .assign(to: &self.$alarms)
     }
 
@@ -158,10 +150,9 @@ class AlarmSettingTableViewCell: UITableViewCell {
 
     var `switch` = UISwitch()
     
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-//        self.accessoryView = self.switch
+        self.accessoryView = self.switch
         
         
         contentView.add(iconImageView) {
@@ -212,7 +203,7 @@ class AlarmSettingTableViewCell: UITableViewCell {
     
     func configure(repeatableAlarm: RepeatableAlarm) {
         self.titleLabel.text = repeatableAlarm.title
-        self.subTitleLabel.text = repeatableAlarm.content
+        self.subTitleLabel.text = repeatableAlarm.suggestedUse
         self.dateLabel.text = nil
         var dateText = ""
         for date in repeatableAlarm.dates {
@@ -229,5 +220,6 @@ class AlarmSettingTableViewCell: UITableViewCell {
                 self.iconImageView.image = UIImage(named: "pillRound")
             }
         }
+        self.switch.isOn = repeatableAlarm.isEnable
     }
 }

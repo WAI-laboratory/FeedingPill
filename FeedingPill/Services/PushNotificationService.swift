@@ -95,7 +95,7 @@ class PushNotificationManager: NSObject {
             let trigger = UNCalendarNotificationTrigger(dateMatching: dateCompoenet, repeats: true)
             let content = UNMutableNotificationContent()
             content.title = reminder.title
-            content.body = reminder.content
+            content.body = reminder.suggestedUse
             content.sound = .default
             content.categoryIdentifier = reminder.type
             // TODO: - userinfo 바꾸기

@@ -14,6 +14,7 @@ class AlarmAddEditViewController: UIViewController, UITableViewDelegate, UITable
         _dateFormatter.dateFormat = "hh:mm a"
         return _dateFormatter
     }()
+    
     var imageViewWrapperView = UIView()
     var imageView = UIImageView()
     var plusImageView = UIImageView()
@@ -249,10 +250,13 @@ class AlarmAddEditViewController: UIViewController, UITableViewDelegate, UITable
                 
                 let nutrientAction = UIAlertAction(title: "nutrients", style: .default) { [weak self] _ in
                     self?.pillType = .nutrients
+                    
+                    self?.tableView.reloadData()
                 }
                 
                 let pillAction = UIAlertAction(title: "Medicine", style: .default) { [weak self] _ in
                     self?.pillType = .medicine
+                    self?.tableView.reloadData()
                 }
                 
                 
@@ -289,7 +293,6 @@ class AlarmAddEditViewController: UIViewController, UITableViewDelegate, UITable
     
     @objc
     func save() {
-        
         var repeatableAlarm = RepeatableAlarm()
         repeatableAlarm.onSnooze = self.snoozeEnabled
         for date in dates {
@@ -297,6 +300,7 @@ class AlarmAddEditViewController: UIViewController, UITableViewDelegate, UITable
         }
         
         repeatableAlarm.title = self.pillName ?? "Take a pill!"
+        repeatableAlarm.suggestedUse = self.suggestedUse ?? ""
         for weekday in self.selectedWeekDays.weekdays {
             repeatableAlarm.repeatDays.append(weekday)
         }
