@@ -372,6 +372,8 @@ class AlarmAddEditViewController: UIViewController, UITableViewDelegate, UITable
         }
         repeatableAlarm.title = self.pillName ?? "Take a pill!"
         repeatableAlarm.suggestedUse = self.suggestedUse ?? ""
+        repeatableAlarm.pillType = self.pillType.rawValue
+        print("🥶 aaaa date \(self.dates)")
         for weekday in self.selectedWeekDays.weekdays {
             repeatableAlarm.repeatDays.append(weekday)
         }

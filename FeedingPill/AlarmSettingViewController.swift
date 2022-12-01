@@ -99,14 +99,11 @@ extension AlarmSettingViewController: UITableViewDataSource, UITableViewDelegate
         //tag is used to indicate which row had been touched
         sw.tag = indexPath.row
         sw.addTarget(self, action: #selector(self.switchTapped(_:)), for: .valueChanged)
+        cell.backgroundColor = UIColor.secondarySystemGroupedBackground
         if alarm.isEnable {
-            cell.backgroundColor = UIColor.white
-            
             cell.isEnableAlpha = 1.0
-            
             sw.setOn(true, animated: false)
         } else {
-            cell.backgroundColor = UIColor.systemGroupedBackground
             cell.isEnableAlpha = 0.5
         }
         
@@ -119,7 +116,7 @@ extension AlarmSettingViewController: UITableViewDataSource, UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == core.alarms.count {
+        if indexPath.section == 1,indexPath.row == 0 {
             let cell = tableView.cellForRow(at: indexPath)
             cell?.setSelected(true, animated: true)
             cell?.setSelected(false, animated: true)
@@ -182,6 +179,8 @@ class AlarmSettingTableViewCell: UITableViewCell {
     private let iconImageView = UIImageView()
     private let timeLabel = UILabel()
     private let dateLabel = UILabel()
+    
+    private let pillTypeLabel = UILabel()
 
     var `switch` = UISwitch()
     
@@ -197,8 +196,6 @@ class AlarmSettingTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        self.accessoryView = self.switch
-        
         
         contentView.add(iconImageView) {
             $0.layer.cornerRadius = 8
@@ -209,6 +206,24 @@ class AlarmSettingTableViewCell: UITableViewCell {
                 make.leading.equalToSuperview().inset(16)
             }
         }
+        
+        contentView.add(self.switch) {
+            $0.snp.makeConstraints { make in
+                make.centerY.equalToSuperview()
+                make.trailing.equalToSuperview().inset(16)
+            }
+        }
+        
+        contentView.add(self.pillTypeLabel) {
+            $0.font = .preferredFont(forTextStyle: .caption2)
+            $0.snp.makeConstraints { make in
+                make.top.equalTo(self.iconImageView.snp.bottom).offset(8)
+                make.leading.trailing.equalTo(self.iconImageView)
+                make.centerX.equalTo(self.iconImageView)
+            }
+        }
+        
+        
         contentView.add(titleLabel) {
             $0.font = .preferredFont(forTextStyle: .title1)
             $0.snp.makeConstraints { make in
@@ -227,17 +242,21 @@ class AlarmSettingTableViewCell: UITableViewCell {
         
         contentView.add(dateLabel) {
             $0.font = .preferredFont(forTextStyle: .caption1)
+            $0.numberOfLines = 0
             $0.snp.makeConstraints { make in
                 make.top.equalTo(self.subTitleLabel.snp.bottom).offset(12)
+                make.leading.equalTo(self.iconImageView.snp.trailing).offset(16)
                 make.leading.equalTo(self.iconImageView.snp.trailing).offset(16)
             }
         }
         
         contentView.add(timeLabel) {
             $0.font = .preferredFont(forTextStyle: .caption1)
+            $0.numberOfLines = 0
             $0.snp.makeConstraints { make in
                 make.top.equalTo(self.dateLabel.snp.bottom).offset(4)
                 make.leading.equalTo(self.iconImageView.snp.trailing).offset(16)
+                make.trailing.equalTo(self.switch.snp.leading).inset(8)
                 make.bottom.equalToSuperview().inset(16)
             }
         }
@@ -263,7 +282,6 @@ class AlarmSettingTableViewCell: UITableViewCell {
             ImageDataController.shared.getThumbnailImage(alarm: repeatableAlarm) { [weak self] image in
                 self?.iconImageView.image = image
             }
-            
         } else {
             if let pillType = PillType(rawValue: repeatableAlarm.pillType) {
                 switch pillType {
@@ -275,6 +293,7 @@ class AlarmSettingTableViewCell: UITableViewCell {
             }
             
         }
+        self.pillTypeLabel.text = repeatableAlarm.pillType
 
         self.switch.isOn = repeatableAlarm.isEnable
     }

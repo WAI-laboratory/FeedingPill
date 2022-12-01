@@ -1,6 +1,7 @@
 import UIKit
 import Combine
 import UserNotifications
+import Kingfisher
 
 class PushNotificationManager: NSObject {
     typealias ErrorFactory = PushNotificationManagerErrorFactory
@@ -80,7 +81,7 @@ class PushNotificationManager: NSObject {
     }
     
     func scheduleNotification(reminder: any AlarmProtocol) {
-        unscheduleNotification(reminderIdentifier: reminder.id)
+        unscheduleNotification(reminder: reminder)
         if var reminder = reminder as? SingleAlarm {
             var dateCompoenet = DateComponents()
             dateCompoenet.year = reminder.targetDate.year
@@ -123,10 +124,28 @@ class PushNotificationManager: NSObject {
                         
                         let content = UNMutableNotificationContent()
                         content.title = reminder.title
-                        content.body = "Take a Pill!"
+                        content.body = reminder.suggestedUse
                         content.sound = .default
                         content.categoryIdentifier = reminder.type
-                        let identifier = reminder.id + "-\(day)" // reminder.id + 요일 숫자
+                        if let imageId = reminder.imageId {
+                            content.userInfo = ["imageId": imageId]
+                            ImageCache.default.retrieveImage(forKey: imageId, options: .none) { result in
+                                switch result {
+                                case .success(let value):
+                                    if let image = value.image {
+                                        if let attachment = UNNotificationAttachment.create(identifier: imageId, image: image, options: nil) {
+                                            content.attachments = [attachment]
+                                        }
+                                    }
+                                    
+                                case .failure(let error):
+                                    break
+                                }
+                            }
+                        }
+                        
+                        
+                        let identifier = reminder.id + "-\(day)-\(date.hour)-\(date.minute)" // reminder.id + 요일 숫자
                         let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
                         UNUserNotificationCenter.current().add(request) {(error) in
                             if let error = error {
@@ -140,10 +159,24 @@ class PushNotificationManager: NSObject {
             
         }
     }
-    func unscheduleNotification(reminderIdentifier: String) {
-        var identifiers = [Int](0...6).map { "\(reminderIdentifier)-\($0)"}
-        identifiers.append(reminderIdentifier)
-        notificationCenter.removePendingNotificationRequests(withIdentifiers: identifiers)
+    func unscheduleNotification(reminder: AlarmProtocol) {
+        if let reminder = reminder as? SingleAlarm {
+            var identifiers = [Int](0...6).map { "\(reminder.id)-\($0)"}
+            identifiers.append(reminder.id)
+            notificationCenter.removePendingNotificationRequests(withIdentifiers: identifiers)
+            
+        } else if var reminder = reminder as? RepeatableAlarm {
+            var identifiers = [String]()
+            for day in reminder.repeatDays {
+                for date in reminder.dates {
+                    identifiers.append((reminder.id + "-\(day)-\(date.hour)-\(date.minute)"))
+                }
+            }
+            identifiers.append(reminder.id)
+            notificationCenter.removePendingNotificationRequests(withIdentifiers: identifiers)
+        }
+
+        
     }
     
     func showNotificationImmediately(title: String, body: String) {
@@ -279,3 +312,25 @@ enum PushNotificationManagerErrorFactory: ErrorFactory {
     }
 }
 
+
+extension UNNotificationAttachment {
+static func create(identifier: String, image: UIImage, options: [NSObject : AnyObject]?) -> UNNotificationAttachment? {
+    let fileManager = FileManager.default
+    let tmpSubFolderName = ProcessInfo.processInfo.globallyUniqueString
+    let tmpSubFolderURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(tmpSubFolderName, isDirectory: true)
+    do {
+        try fileManager.createDirectory(at: tmpSubFolderURL, withIntermediateDirectories: true, attributes: nil)
+        let imageFileIdentifier = identifier+".png"
+        let fileURL = tmpSubFolderURL.appendingPathComponent(imageFileIdentifier)
+        guard let imageData = image.pngData() else {
+            return nil
+        }
+        try imageData.write(to: fileURL)
+        let imageAttachment = try UNNotificationAttachment.init(identifier: imageFileIdentifier, url: fileURL, options: options)
+        return imageAttachment
+    } catch {
+        print("error " + error.localizedDescription)
+    }
+    return nil
+  }
+}
