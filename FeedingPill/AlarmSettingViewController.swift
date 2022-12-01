@@ -62,6 +62,16 @@ class AlarmSettingViewController: UIViewController {
             }
             .store(in: &subscription)
     }
+    
+    func deleteAlarm(index: Int) {
+        let currentAlarm = core.alarms[index]
+        let alarm = DBService.shared.realm.objects(RepeatableAlarm.self).filter(NSPredicate(format: "id == %@", currentAlarm.id))
+        if let imageId = currentAlarm.imageId {
+            ImageDataController.shared.deleteImage(alarm: currentAlarm, for: imageId)
+        }
+        PushNotificationManager.shared.unscheduleNotification(reminder: currentAlarm)
+        DBService.shared.delete(objects: alarm)
+    }
 }
 
 extension AlarmSettingViewController: UITableViewDataSource, UITableViewDelegate {
@@ -122,6 +132,21 @@ extension AlarmSettingViewController: UITableViewDataSource, UITableViewDelegate
             cell?.setSelected(false, animated: true)
             self.addAlarmAction()
         }
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if indexPath.section == 0 {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if indexPath.section == 0, editingStyle == .delete {
+            self.deleteAlarm(index: indexPath.row)
+        }
+        
     }
     
     @objc
