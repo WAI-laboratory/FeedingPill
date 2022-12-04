@@ -201,6 +201,7 @@ class AlarmSettingTableViewCell: UITableViewCell {
     static let identifier = "AlarmSettingTableViewCell"
     private let titleLabel = UILabel()
     private let subTitleLabel = UILabel()
+    private let iconImageWrapperView = UIView()
     private let iconImageView = UIImageView()
     private let timeLabel = UILabel()
     private let dateLabel = UILabel()
@@ -222,15 +223,27 @@ class AlarmSettingTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        contentView.add(iconImageView) {
+                
+        contentView.add(iconImageWrapperView) {
             $0.layer.cornerRadius = 8
             $0.layer.masksToBounds = true
+            $0.backgroundColor = .tertiarySystemGroupedBackground
             $0.snp.makeConstraints { make in
                 make.height.width.equalTo(64)
                 make.top.equalToSuperview().inset(16)
                 make.leading.equalToSuperview().inset(16)
             }
         }
+        
+        contentView.add(iconImageView) {
+            $0.layer.cornerRadius = 8
+            $0.layer.masksToBounds = true
+            $0.snp.makeConstraints { make in
+                make.edges.equalTo(self.iconImageWrapperView)
+            }
+        }
+        
+        
         
         contentView.add(self.switch) {
             $0.snp.makeConstraints { make in
@@ -311,7 +324,7 @@ class AlarmSettingTableViewCell: UITableViewCell {
             if let pillType = PillType(rawValue: repeatableAlarm.pillType) {
                 switch pillType {
                 case .medicine:
-                    self.iconImageView.image = UIImage(named: "pill")
+                    self.iconImageView.image = UIImage(named: "pill")?.rotated(by: 45)
                 case .nutrients:
                     self.iconImageView.image = UIImage(named: "pillRound")
                 }

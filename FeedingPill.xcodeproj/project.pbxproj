@@ -30,6 +30,7 @@
 		1813452E28FEF18E001E3CBD /* WeekDaysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1813452D28FEF18E001E3CBD /* WeekDaysViewController.swift */; };
 		183485F4293653B600D59DC9 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 183485F3293653B600D59DC9 /* Kingfisher */; };
 		183485F6293653E400D59DC9 /* ImageDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183485F5293653E400D59DC9 /* ImageDataController.swift */; };
+		1834860B293C887300D59DC9 /* UIImage+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1834860A293C887300D59DC9 /* UIImage+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,7 @@
 		1813452228FD5889001E3CBD /* AlarmSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSettingViewController.swift; sourceTree = "<group>"; };
 		1813452D28FEF18E001E3CBD /* WeekDaysViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekDaysViewController.swift; sourceTree = "<group>"; };
 		183485F5293653E400D59DC9 /* ImageDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataController.swift; sourceTree = "<group>"; };
+		1834860A293C887300D59DC9 /* UIImage+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +143,7 @@
 			children = (
 				1813451B28FD5746001E3CBD /* ErrorHanlder.swift */,
 				1813452028FD5801001E3CBD /* Date+Ext.swift */,
+				1834860A293C887300D59DC9 /* UIImage+Ext.swift */,
 			);
 			path = etc;
 			sourceTree = "<group>";
@@ -238,6 +241,7 @@
 			files = (
 				1813450B28FD1EF7001E3CBD /* PushNotificationService.swift in Sources */,
 				1813450628FD0D3C001E3CBD /* AlarmAddEditViewcontroller.swift in Sources */,
+				1834860B293C887300D59DC9 /* UIImage+Ext.swift in Sources */,
 				1813452128FD5801001E3CBD /* Date+Ext.swift in Sources */,
 				181344EF28FD0CAB001E3CBD /* ViewController.swift in Sources */,
 				181344EB28FD0CAB001E3CBD /* AppDelegate.swift in Sources */,

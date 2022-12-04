@@ -489,10 +489,10 @@ extension AlarmAddEditViewController: UIContextMenuInteractionDelegate {
     func contextMenuInteraction(_ interaction: UIContextMenuInteraction, configurationForMenuAtLocation location: CGPoint) -> UIContextMenuConfiguration? {
         
         return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { suggestedActions in
-            var photoLibraryAction = UIAction(title: "", state: .off) { [weak self] _ in
+            let photoLibraryAction = UIAction(title: "", state: .off) { [weak self] _ in
                 self?.presentImagePicker()
             }
-            var cameraAction = UIAction(title: "", state: .off) { [weak self] _ in
+            let cameraAction = UIAction(title: "", state: .off) { [weak self] _ in
                 self?.presentCamera()
             }
             return UIMenu(title: "", children: [
