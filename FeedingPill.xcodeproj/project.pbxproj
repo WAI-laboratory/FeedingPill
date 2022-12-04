@@ -18,8 +18,6 @@
 		1813450828FD0D7B001E3CBD /* AlaramService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1813450728FD0D7B001E3CBD /* AlaramService.swift */; };
 		1813450B28FD1EF7001E3CBD /* PushNotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1813450A28FD1EF7001E3CBD /* PushNotificationService.swift */; };
 		1813450E28FD494F001E3CBD /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1813450D28FD494F001E3CBD /* Alarm.swift */; };
-		1813451128FD49CA001E3CBD /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 1813451028FD49CA001E3CBD /* Realm */; };
-		1813451328FD49CA001E3CBD /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1813451228FD49CA001E3CBD /* RealmSwift */; };
 		1813451528FD4FD5001E3CBD /* SoftDeletable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1813451428FD4FD5001E3CBD /* SoftDeletable.swift */; };
 		1813451728FD5644001E3CBD /* DBService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1813451628FD5644001E3CBD /* DBService.swift */; };
 		1813451928FD56E1001E3CBD /* OSLogService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1813451828FD56E1001E3CBD /* OSLogService.swift */; };
@@ -31,6 +29,8 @@
 		183485F4293653B600D59DC9 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 183485F3293653B600D59DC9 /* Kingfisher */; };
 		183485F6293653E400D59DC9 /* ImageDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183485F5293653E400D59DC9 /* ImageDataController.swift */; };
 		1834860B293C887300D59DC9 /* UIImage+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1834860A293C887300D59DC9 /* UIImage+Ext.swift */; };
+		1834860E293CD8EE00D59DC9 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 1834860D293CD8EE00D59DC9 /* Realm */; };
+		18348610293CD8EE00D59DC9 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1834860F293CD8EE00D59DC9 /* RealmSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,10 +62,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1813451328FD49CA001E3CBD /* RealmSwift in Frameworks */,
-				1813451128FD49CA001E3CBD /* Realm in Frameworks */,
 				1813450128FD0CCF001E3CBD /* SnapKit in Frameworks */,
 				1813450428FD0D15001E3CBD /* AddThen in Frameworks */,
+				1834860E293CD8EE00D59DC9 /* Realm in Frameworks */,
+				18348610293CD8EE00D59DC9 /* RealmSwift in Frameworks */,
 				183485F4293653B600D59DC9 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -175,9 +175,9 @@
 			packageProductDependencies = (
 				1813450028FD0CCF001E3CBD /* SnapKit */,
 				1813450328FD0D15001E3CBD /* AddThen */,
-				1813451028FD49CA001E3CBD /* Realm */,
-				1813451228FD49CA001E3CBD /* RealmSwift */,
 				183485F3293653B600D59DC9 /* Kingfisher */,
+				1834860D293CD8EE00D59DC9 /* Realm */,
+				1834860F293CD8EE00D59DC9 /* RealmSwift */,
 			);
 			productName = FeedingPill;
 			productReference = 181344E728FD0CAB001E3CBD /* FeedingPill.app */;
@@ -210,8 +210,8 @@
 			packageReferences = (
 				181344FF28FD0CCF001E3CBD /* XCRemoteSwiftPackageReference "SnapKit" */,
 				1813450228FD0D15001E3CBD /* XCRemoteSwiftPackageReference "AddThen" */,
-				1813450F28FD49CA001E3CBD /* XCRemoteSwiftPackageReference "realm-swift" */,
 				183485F2293653B500D59DC9 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				1834860C293CD8EE00D59DC9 /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = 181344E828FD0CAB001E3CBD /* Products */;
 			projectDirPath = "";
@@ -393,15 +393,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = VZTRDYYN8R;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FeedingPill/Info.plist;
-				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -409,9 +409,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.WAI.FeedingPill;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -421,15 +424,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = VZTRDYYN8R;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FeedingPill/Info.plist;
-				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -437,9 +440,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.WAI.FeedingPill;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -483,20 +489,20 @@
 				minimumVersion = 1.0.0;
 			};
 		};
-		1813450F28FD49CA001E3CBD /* XCRemoteSwiftPackageReference "realm-swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/realm/realm-swift.git";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
 		183485F2293653B500D59DC9 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 7.0.0;
+			};
+		};
+		1834860C293CD8EE00D59DC9 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.20.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -512,20 +518,20 @@
 			package = 1813450228FD0D15001E3CBD /* XCRemoteSwiftPackageReference "AddThen" */;
 			productName = AddThen;
 		};
-		1813451028FD49CA001E3CBD /* Realm */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1813450F28FD49CA001E3CBD /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = Realm;
-		};
-		1813451228FD49CA001E3CBD /* RealmSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1813450F28FD49CA001E3CBD /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = RealmSwift;
-		};
 		183485F3293653B600D59DC9 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 183485F2293653B500D59DC9 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		1834860D293CD8EE00D59DC9 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1834860C293CD8EE00D59DC9 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		1834860F293CD8EE00D59DC9 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1834860C293CD8EE00D59DC9 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

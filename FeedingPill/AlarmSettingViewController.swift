@@ -326,7 +326,8 @@ class AlarmSettingTableViewCell: UITableViewCell {
                 case .medicine:
                     self.iconImageView.image = UIImage(named: "pill")?.rotated(by: 45)
                 case .nutrients:
-                    self.iconImageView.image = UIImage(named: "pillRound")
+                    let image = UIImage(named: "pillRound")?.resized(to: CGSize(width: 48, height: 48))
+                    self.iconImageView.image = image
                 }
             }
             
